@@ -12,7 +12,7 @@ export function middleware(request: NextRequest) {
   //   return NextResponse.redirect(new URL("/", request.nextUrl));
   // }
 
-  // Working with cookies and headers.
+  // Cookies and headers.
   const response = NextResponse.next();
   const themePreference = request.cookies.get("theme");
   if (!themePreference) {
