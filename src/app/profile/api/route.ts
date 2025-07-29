@@ -19,7 +19,7 @@ export async function GET(_request: NextRequest) {
   // const theme = request.cookies.get("theme");
   console.log(cookieStore.get("resultsPerPage"));
 
-  // By default, new Response returns a plain text, but by changing the headers content-type, we can return html.
+  // By default, new Response returns a plain text, but by setting the headers content-type, we can return html.
   return new Response("<h1>Get Data</h1>", {
     headers: {
       "Content-Type": "text/html",
