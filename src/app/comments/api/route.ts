@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { comments } from "./data";
+import { comments } from "../data";
 
 // NAME MUST BE CAPITALIZED
 // NextRequest is a built-in type in Next.js that provides methods for query parameters.
