@@ -1,7 +1,7 @@
-// import type { Metadata } from "next";
 import "./globals.css";
+import ThemeProvider from "./components/theme-provider";
+// import type { Metadata } from "next";
 // import { ErrorWrapper } from "./error-wrapper";
-
 // Metadata ensures content looks great when shared or indexed by search engines
 // 2 ways to handle metadata in layout.tsx or page.tsx files:
 // export a STATIC metadata object
@@ -23,18 +23,21 @@ import "./globals.css";
 // };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+  // <ThemeProvider> is an imported client side component. Importing allows this page to stay server side.
   return (
     <html lang="en">
-      <body>
-        <header style={{ backgroundColor: "lightblue", padding: "1rem" }}>
-          <p>Header</p>
-        </header>
-        {/* <ErrorWrapper>{children}</ErrorWrapper> */}
-        {children}
-        <footer style={{ backgroundColor: "ghostwhite", padding: "1rem" }}>
-          <p>Footer</p>
-        </footer>
-      </body>
+      <ThemeProvider>
+        <body>
+          <header style={{ backgroundColor: "lightblue", padding: "1rem" }}>
+            <p>Header</p>
+          </header>
+          {/* <ErrorWrapper>{children}</ErrorWrapper> */}
+          {children}
+          <footer style={{ backgroundColor: "ghostwhite", padding: "1rem" }}>
+            <p>Footer</p>
+          </footer>
+        </body>
+      </ThemeProvider>
     </html>
   );
 };

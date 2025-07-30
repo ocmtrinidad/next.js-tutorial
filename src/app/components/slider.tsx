@@ -4,24 +4,12 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useTheme } from "./theme-provider";
 
 export default function ImageSlider() {
+  const theme = useTheme();
   const settings = {
     dots: true,
   };
-  return (
-    <div className="image-slider-container">
-      <Slider {...settings}>
-        <div>
-          <img src="http://picsum.photos/g/400/200" />
-        </div>
-        <div>
-          <img src="http://picsum.photos/g/400/200" />
-        </div>
-        <div>
-          <img src="http://picsum.photos/g/400/200" />
-        </div>
-      </Slider>
-    </div>
-  );
+  return <h1 style={{ color: theme.colors.primary }}>Slider</h1>;
 }
