@@ -23,7 +23,7 @@ import ThemeProvider from "./components/theme-provider";
 // };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
-  // <ThemeProvider> is an imported client side component. Importing allows this page to stay server side.
+  // <ThemeProvider> is an imported client side component. Importing and using {children} allows this page, and its children to stay server side.
   return (
     <html lang="en">
       <ThemeProvider>
