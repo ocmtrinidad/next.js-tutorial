@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./globals.css";
 // import { ErrorWrapper } from "./error-wrapper";
 
 // Metadata ensures content looks great when shared or indexed by search engines
