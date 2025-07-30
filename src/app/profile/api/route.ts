@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { headers, cookies } from "next/headers";
 
-export async function GET(_request: NextRequest) {
+export async function GET(request: NextRequest) {
   // Accessing headers from the request.
   const headersList = await headers();
   console.log(headersList.get("Authorization"));
@@ -16,7 +16,8 @@ export async function GET(_request: NextRequest) {
   // Two ways to access cookies:
   // 1. cookieStore.get("name").
   // 2. request.cookies.get("name").
-  // const theme = request.cookies.get("theme");
+  const theme = request.cookies.get("theme");
+  console.log(theme);
   console.log(cookieStore.get("resultsPerPage"));
 
   // By default, new Response returns a plain text, but by setting the headers content-type, we can return html.
