@@ -24,11 +24,7 @@ export default function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <ThemeContext.Provider value={defaultTheme}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext value={defaultTheme}>{children}</ThemeContext>;
 }
 
 // Gets access to theme.
