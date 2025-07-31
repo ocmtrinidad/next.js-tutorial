@@ -23,9 +23,9 @@ export async function getProducts() {
 
 export async function getProduct(id: number) {
   return prisma.product.findUnique({
-    // Can be written as just { id }
+    // Same as id: id
     where: {
-      id: id,
+      id,
     },
   });
 }
@@ -37,9 +37,9 @@ export async function addProduct(
 ) {
   return prisma.product.create({
     data: {
-      title: title,
-      price: price,
-      description: description,
+      title,
+      price,
+      description,
     },
   });
 }
@@ -52,12 +52,12 @@ export async function updateProduct(
 ) {
   return prisma.product.update({
     where: {
-      id: id,
+      id,
     },
     data: {
-      title: title,
-      price: price,
-      description: description,
+      title,
+      price,
+      description,
     },
   });
 }
