@@ -1,47 +1,69 @@
-import { addProduct } from "@/prisma-db";
-import { redirect } from "next/navigation";
+"use client";
+
 import Submit from "../components/submit";
+import { FormState, createProduct } from "../actions/products";
+import { useActionState } from "react";
 
 export default function AddProductPage() {
-  async function createProduct(formData: FormData) {
-    // To use function as a server action
-    "use server";
-    const title = formData.get("title") as string;
-    const price = formData.get("price") as string;
-    const description = formData.get("description") as string;
+  const initialState: FormState = {
+    errors: {},
+  };
 
-    await addProduct(title, parseInt(price), description);
-    redirect("/products-db");
-  }
+  // state is how you use the initialState (the errors that are returned by createProduct).
+  // formAction is how you call createProduct.
+  // isPending is similar to useFormStatus(), but useFormStatus() is specifically for forms, while isPending can be used for any action.
+  // Shows errors, but works.
+  const [state, formAction, isPending] = useActionState(
+    createProduct,
+    initialState
+  );
 
   return (
-    <form action={createProduct} className="p-4 space-y-4 max-w-96">
-      <label htmlFor="title">
-        Title
-        <input
-          type="text"
-          name="title"
-          id="title"
-          className="block w-full p-2 border rounded"
-        />
-      </label>
-      <label htmlFor="price">
-        Price
-        <input
-          type="number"
-          name="price"
-          id="price"
-          className="block w-full p-2 border rounded"
-        />
-      </label>
-      <label htmlFor="description">
-        Description
-        <textarea
-          name="description"
-          id="description"
-          className="block w-full p-2 border rounded"
-        ></textarea>
-      </label>
+    <form action={formAction} className="p-4 space-y-4 max-w-96">
+      <div>
+        <label htmlFor="title">
+          Title
+          <input
+            type="text"
+            name="title"
+            id="title"
+            className="block w-full p-2 border rounded"
+          />
+        </label>
+        {state.errors.title && (
+          <p className="text-red-500">{state.errors.title}</p>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor="price">
+          Price
+          <input
+            type="number"
+            name="price"
+            id="price"
+            className="block w-full p-2 border rounded"
+          />
+        </label>
+        {state.errors.price && (
+          <p className="text-red-500">{state.errors.price}</p>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor="description">
+          Description
+          <textarea
+            name="description"
+            id="description"
+            className="block w-full p-2 border rounded"
+          ></textarea>
+        </label>
+        {state.errors.description && (
+          <p className="text-red-500">{state.errors.description}</p>
+        )}
+      </div>
+
       <Submit />
     </form>
   );
