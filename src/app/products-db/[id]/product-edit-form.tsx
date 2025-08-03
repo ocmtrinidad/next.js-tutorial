@@ -1,7 +1,7 @@
 "use client";
 
 import Submit from "@/app/components/submit";
-import { FormState, createProduct } from "@/app/actions/products";
+import { FormState, editProduct } from "@/app/actions/products";
 import { useActionState } from "react";
 import { Product } from "../page";
 
@@ -10,12 +10,11 @@ export default function ProductEditFormPage({ product }: { product: Product }) {
     errors: {},
   };
 
-  // state is how you use the initialState (the errors that are returned by createProduct).
-  // formAction is how you call createProduct.
-  // isPending is similar to useFormStatus(), but useFormStatus() is specifically for forms, while isPending can be used for any action.
-  // Shows errors, but works.
+  // This binds the product.id to editProduct() which will send editProduct() the product.id without having to use form inputs.
+  const editProductWithId = editProduct.bind(null, product.id);
+
   const [state, formAction, isPending] = useActionState(
-    createProduct,
+    editProductWithId,
     initialState
   );
 
