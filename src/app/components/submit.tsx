@@ -9,7 +9,7 @@ export default function Submit() {
       disabled={pending}
       className="block w-full p-2 bg-blue-500 rounded disabled:bg-gray-500"
     >
-      Add Product
+      Submit
     </button>
   );
 }
