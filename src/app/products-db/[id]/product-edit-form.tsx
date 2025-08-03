@@ -10,7 +10,7 @@ export default function ProductEditFormPage({ product }: { product: Product }) {
     errors: {},
   };
 
-  // This binds the product.id to editProduct() which will send editProduct() the product.id without having to use form inputs.
+  // This binds the product.id to editProduct() which will send editProduct() the product.id without having to expose it in form inputs.
   const editProductWithId = editProduct.bind(null, product.id);
 
   const [state, formAction, isPending] = useActionState(
