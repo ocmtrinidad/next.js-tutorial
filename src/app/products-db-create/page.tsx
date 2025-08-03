@@ -9,6 +9,7 @@ export default function AddProductPage() {
     errors: {},
   };
 
+  // useActionState() allows for updating state based on result of form action.
   // state is how you use the initialState which consists of the errors that are returned by createProduct.
   // formAction is how you call createProduct.
   // isPending is similar to useFormStatus(), but useFormStatus() is specifically for forms, while isPending can be used for any action.
