@@ -1,7 +1,8 @@
 // To use function as a server action
 "use server";
 
-import { addProduct, updateProduct } from "@/prisma-db";
+import { addProduct, deleteProduct, updateProduct } from "@/prisma-db";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export type Errors = {
@@ -65,4 +66,10 @@ export async function editProduct(
 
   await updateProduct(id, title, parseInt(price), description);
   redirect("/products-db");
+}
+
+export async function removeProduct(id: number) {
+  await deleteProduct(id);
+  // revalidatePath() fetches route's data
+  revalidatePath("/products-db");
 }
