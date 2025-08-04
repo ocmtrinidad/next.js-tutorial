@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Product } from "./page";
 import { removeProduct } from "../actions/products";
 import { useOptimistic } from "react";
+import Form from "next/form";
 
 export default function ProductsList({ products }: { products: Product[] }) {
   // useOptimistic() allows for the UI to be optimistically updated.
@@ -34,11 +35,11 @@ export default function ProductsList({ products }: { products: Product[] }) {
           </h2>
           <p>{product.description}</p>
           <p className="text-lg font-medium">${product.price}</p>
-          <form action={removeProductById.bind(null, product.id)}>
+          <Form action={removeProductById.bind(null, product.id)}>
             <button className="px-4 py-2 mt-4 text-white bg-red-500 rounded-md hover:bg-red-800">
               Delete
             </button>
-          </form>
+          </Form>
         </li>
       ))}
     </ul>
