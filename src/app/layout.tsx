@@ -28,14 +28,8 @@ const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     <html lang="en">
       <ThemeProvider>
         <body>
-          <header style={{ backgroundColor: "lightblue", padding: "1rem" }}>
-            <p>Header</p>
-          </header>
           {/* <ErrorWrapper>{children}</ErrorWrapper> */}
           {children}
-          <footer style={{ backgroundColor: "ghostwhite", padding: "1rem" }}>
-            <p>Footer</p>
-          </footer>
         </body>
       </ThemeProvider>
     </html>
