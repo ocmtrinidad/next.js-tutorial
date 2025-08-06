@@ -37,6 +37,7 @@ import "./globals.css";
 // };
 
 import Nav from "./components/nav";
+import AuthProvider from "./components/AuthProvider";
 
 export default function NextAuthLayout({
   children,
@@ -48,7 +49,7 @@ export default function NextAuthLayout({
       <body>
         <div className="bg-gray-100">
           <Nav />
-          {children}
+          <AuthProvider>{children}</AuthProvider>
         </div>
       </body>
     </html>
