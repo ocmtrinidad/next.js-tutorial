@@ -28,7 +28,7 @@
 // // };
 
 import withAuth from "next-auth/middleware";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 // Protecting pages with middleware.
 export default withAuth(
@@ -37,7 +37,7 @@ export default withAuth(
       request.nextUrl.pathname.startsWith("/CreateUser") &&
       request.nextauth?.token?.role != "admin"
     ) {
-      // new URL("input", "base"). This creates a new URL by checking the base URL, then modifying the path based on the input. localhost:3000/CreateUser becomes localhost:3000/Denied.
+      // new URL("input", "base"). This creates a new URL by checking the base URL, then modifying the path based on the input.
       return NextResponse.rewrite(new URL("/Denied", request.url));
     }
   },
