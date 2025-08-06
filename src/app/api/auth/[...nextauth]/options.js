@@ -27,7 +27,8 @@ export const options = {
       clientSecret: process.env.GOOGLE_SECRET,
       profile(profile) {
         let userRole = "Google User";
-        if (profile?.email === "ocmtrinidad@gmail.com") {
+        // NOT ADMIN FOR TESTING
+        if (profile?.email === "1ocmtrinidad@gmail.com") {
           userRole = "Admin";
         }
         return {
