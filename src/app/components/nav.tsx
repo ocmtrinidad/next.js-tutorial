@@ -18,6 +18,7 @@ export default async function Nav() {
           {/* Checks if user is logged in */}
           {session ? (
             // Both Github and Google use http://localhost:3000/api/auth/callback/Github_OR_Google as default callback URLs
+            // Redirects to sign-in page. Then, if they log in or log out, they will be redirected back to / per the callbackUrl.
             <Link href="/api/auth/signout?callbackUrl=/">Logout</Link>
           ) : (
             <Link href="/api/auth/signin?callbackUrl=/">Login</Link>
