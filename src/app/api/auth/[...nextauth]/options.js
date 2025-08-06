@@ -40,14 +40,14 @@ export const options = {
   ],
   // Adds user role to the token
   callbacks: {
-    // Allows for server side access to the token
+    // Allows for access to the token
     async jwt({ token, user }) {
       if (user) {
         token.role = user.role;
       }
       return token;
     },
-    // Allows for client side access to the token
+    // Allows for access to the session
     async session({ session, token }) {
       if (session?.user) {
         session.user.role = token.role;
