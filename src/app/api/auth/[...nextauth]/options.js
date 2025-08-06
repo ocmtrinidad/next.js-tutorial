@@ -9,9 +9,9 @@ export const options = {
       clientSecret: process.env.GITHUB_SECRET,
       // Create session based on the profile information
       profile(profile) {
-        console.log("Profile Github:", profile);
         let userRole = "GitHub User";
-        // If the email matches, assign Admin role
+        // If the email matches, assign Admin role.
+        // Use a database query in production.
         if (profile?.email === "ocmtrinidad@gmail.com") {
           userRole = "Admin";
         }
@@ -26,7 +26,6 @@ export const options = {
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
       profile(profile) {
-        console.log("Profile Google:", profile);
         let userRole = "Google User";
         if (profile?.email === "ocmtrinidad@gmail.com") {
           userRole = "Admin";
