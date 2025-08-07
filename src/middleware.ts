@@ -6,6 +6,7 @@
 // // 2. Conditional statement that checks the request URL and returns a NextResponse.redirect() or rewrite().
 // // redirect() changes the URL in the browser, while rewrite() keeps the URL but changes the content served.
 // export function middleware(request: NextRequest) {
+// // new URL("input", "base"). This creates a new URL by checking the base URL, then modifying the path based on the input.
 //   // return NextResponse.redirect(new URL("/", request.url));
 
 //   // if (request.nextUrl.pathname === "/profile") {
@@ -37,7 +38,6 @@ export default withAuth(
       request.nextUrl.pathname.startsWith("/CreateUser") &&
       request.nextauth?.token?.role != "admin"
     ) {
-      // new URL("input", "base"). This creates a new URL by checking the base URL, then modifying the path based on the input.
       return NextResponse.rewrite(new URL("/Denied", request.url));
     }
   },
