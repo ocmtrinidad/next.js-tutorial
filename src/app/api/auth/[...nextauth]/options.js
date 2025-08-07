@@ -9,9 +9,9 @@ export const options = {
       clientSecret: process.env.GITHUB_SECRET,
       // Create session based on the profile information
       profile(profile) {
+        // Use a database query in production.
         let userRole = "GitHub User";
         // If the email matches, assign Admin role.
-        // Use a database query in production.
         if (profile?.email === "ocmtrinidad@gmail.com") {
           userRole = "Admin";
         }
